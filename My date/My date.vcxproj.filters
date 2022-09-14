@@ -15,15 +15,15 @@
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="..\..\date\date\Date.cpp">
+    <ClCompile Include="Date.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\date\date\Main.cpp">
+    <ClCompile Include="Main.cpp">
       <Filter>Исходные файлы</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="..\..\date\date\Date.h">
+    <ClInclude Include="Date.h">
       <Filter>Файлы заголовков</Filter>
     </ClInclude>
   </ItemGroup>
