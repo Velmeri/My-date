@@ -47,232 +47,316 @@ int Date::GetYear() const
 	return year;
 }
 
+int* Date::GetArr()
+{
+	return arr;
+}
+
 void Date::Print() const
 {
 	cout << day << '.' << month << '.' << year;
 }
 
+void Date::SumDay(const int a)
+{
+	day += a;
+}
+
+void Date::SumMonth(const int a)
+{
+	month += a;
+}
+
+void Date::SumYear(const int a)
+{
+	year += a;
+}
+
 //operators overloading
-void Date::operator++()
-{
-	if (year % 4)
-		if (day == arr[month - 1]) {
-			day = 1;
-			if (month == 12) {
-				month == 1;
-				year++;
-			}
-			else {
-				month++;
-			}
-		}
-		else {
-			day++;
-		}
-	else {
-		if (month == 2)
-			if (day == 29) {
-				day = 1;
-				month++;
-			}
-			else {
-				day++;
-			}
-		else {
-			day++;
-		}
-	}
-}
+//void Date::operator++()
+//{
+//	if (year % 4)
+//		if (day == arr[month - 1]) {
+//			day = 1;
+//			if (month == 12) {
+//				month == 1;
+//				year++;
+//			}
+//			else {
+//				month++;
+//			}
+//		}
+//		else {
+//			day++;
+//		}
+//	else {
+//		if (month == 2)
+//			if (day == 29) {
+//				day = 1;
+//				month++;
+//			}
+//			else {
+//				day++;
+//			}
+//		else {
+//			day++;
+//		}
+//	}
+//}
+//
+//void Date::operator++(int)
+//{
+//	if (year % 4)
+//		if (day == arr[month - 1]) {
+//			day = 1;
+//			if (month == 12) {
+//				month == 1;
+//				++year;
+//			}
+//			else {
+//				++month;
+//			}
+//		}
+//		else {
+//			++day;
+//		}
+//	else {
+//		if (month == 2)
+//			if (day == 29) {
+//				day = 1;
+//				++month;
+//			}
+//			else {
+//				++day;
+//			}
+//		else {
+//			if (day == arr[month - 1]) {
+//				day = 1;
+//				if (month == 12) {
+//					month == 1;
+//					++year;
+//				}
+//				else {
+//					++month;
+//				}
+//			}
+//			else {
+//				++day;
+//			}
+//		}
+//	}
+//}
+//
+//void Date::operator--()
+//{
+//	if (day == 1) {
+//		if (year % 4) {
+//			if (month == 1) {
+//				month = 12;
+//				--year;
+//				day = arr[month - 1];
+//			}
+//			else
+//				day = arr[--month - 1];
+//		}
+//		else if (month == 3) {
+//			day = 29;
+//			--month;
+//		}
+//		else
+//			if (month == 1) {
+//				month = 12;
+//				--year;
+//				day = arr[month - 1];
+//			}
+//			else
+//				day = arr[--month - 1];
+//	}
+//	else
+//		--day;
+//}
+//
+//void Date::operator--(int)
+//{
+//	if (day == 1) {
+//		if (year % 4) {
+//			if (month == 1) {
+//				month = 12;
+//				--year;
+//				day = arr[month - 1];
+//			}
+//			else
+//				day = arr[--month - 1];
+//		}
+//		else if (--month == 2)
+//			day = 29;
+//	}
+//	else
+//		--day;
+//}
+//
+//void Date::operator+=(int x)
+//{
+//	day += x;
+//	for (int i = 0; day > arr[month - 1]; i++) {
+//		if (!(year % 4) && month == 2)
+//			break;
+//		day -= arr[month - 1];
+//		month == arr[month - 1];
+//		if (month == 1)
+//			++year;
+//	}
+//}
+//
+//void Date::operator-=(int x)
+//{
+//	day -= x;
+//	for (int i = 0; day <= 0; i++) {
+//		day += !(year % 4) && month == 3 ? 29 : arr[--month - 1];
+//	}
+//}
+//
+//Date Date::operator+(int x)
+//{
+//	day += x;
+//	for (int i = 0; day > arr[month - 1]; i++) {
+//		if (!(year % 4) && month == 2)
+//			break;
+//		day -= arr[month - 1];
+//		month == arr[month - 1];
+//		if (month == 1)
+//			++year;
+//	}
+//	return Date(day, month, year);
+//}
+//
+//Date Date::operator-(int x)
+//{
+//	day -= x;
+//	for (int i = 0; day <= 0; i++) {
+//		day += !(year % 4) && month == 3 ? 29 : arr[--month - 1];
+//	}
+//	return Date(day, month, year);
+//}
+//
+//bool Date::operator<(Date& obj) const
+//{
+//	if (year < obj.year)
+//		return 1;
+//	else if (year == obj.year && month < obj.month)
+//		return 1;
+//	else if (year == obj.year && month == obj.month && day < obj.day)
+//		return 1;
+//	return 0;
+//}
+//
+//bool Date::operator>(Date& obj) const
+//{
+//	if (year > obj.year)
+//		return 1;
+//	else if (year == obj.year && month > obj.month)
+//		return 1;
+//	else if (year == obj.year && month == obj.month && day > obj.day)
+//		return 1;
+//	return 0;
+//}
+//
+//bool Date::operator==(Date& obj) const
+//{
+//	if (year == obj.year && month == obj.month && day == obj.day)
+//		return 1;
+//	return 0;
+//}
+//
+//bool Date::operator!=(Date& obj) const
+//{
+//	if (year == obj.year && month == obj.month && day == obj.day)
+//		return 0;
+//	return 1;
+//}
+//
+//bool Date::operator<=(Date& obj) const
+//{
+//	if (year <= obj.year)
+//		if (year == obj.year && month <= obj.month)
+//			if (year == obj.year && month == obj.month && day <= obj.day)
+//				return 1;
+//	return 0;
+//}
+//
+//bool Date::operator>=(Date& obj) const
+//{
+//	if (year >= obj.year)
+//		if (year == obj.year && month >= obj.month)
+//			if (year == obj.year && month == obj.month && day >= obj.day)
+//				return 1;
+//	return 0;
+//}
 
-void Date::operator++(int)
+Date operator--(Date& obj)
 {
-	if (year % 4)
-		if (day == arr[month - 1]) {
-			day = 1;
-			if (month == 12) {
-				month == 1;
-				++year;
+	if (obj.GetDay() == 1) {
+		if (obj.GetYear() % 4) {
+			if (obj.GetMonth() == 1) {
+				obj.SetMonth(12);
+				obj.SumYear(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
 			}
 			else {
-				++month;
+				obj.SumMonth(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
 			}
 		}
-		else {
-			++day;
-		}
-	else {
-		if (month == 2)
-			if (day == 29) {
-				day = 1;
-				++month;
-			}
-			else {
-				++day;
-			}
-		else {
-			if (day == arr[month - 1]) {
-				day = 1;
-				if (month == 12) {
-					month == 1;
-					++year;
-				}
-				else {
-					++month;
-				}
-			}
-			else {
-				++day;
-			}
-		}
-	}
-}
-
-void Date::operator--()
-{
-	if (day == 1) {
-		if (year % 4) {
-			if (month == 1) {
-				month = 12;
-				--year;
-				day = arr[month - 1];
-			}
-			else
-				day = arr[--month - 1];
-		}
-		else if (month == 3) {
-			day = 29;
-			--month;
+		else if (obj.GetMonth() == 3) {
+			obj.SetDay(29);
+			obj.SumMonth(-1);
 		}
 		else
-			if (month == 1) {
-				month = 12;
-				--year;
-				day = arr[month - 1];
+			if (obj.GetMonth() == 1) {
+				obj.SetMonth(12);
+				obj.SumYear(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
 			}
-			else
-				day = arr[--month - 1];
+			else {
+				obj.SetMonth(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
+			}
 	}
 	else
-		--day;
+		obj.SumDay(-1);
+	return obj;
 }
 
-void Date::operator--(int)
+Date operator--(Date& obj, int)
 {
-	if (day == 1) {
-		if (year % 4) {
-			if (month == 1) {
-				month = 12;
-				--year;
-				day = arr[month - 1];
+	if (obj.GetDay() == 1) {
+		if (obj.GetYear() % 4) {
+			if (obj.GetMonth() == 1) {
+				obj.SetMonth(12);
+				obj.SumYear(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
 			}
-			else
-				day = arr[--month - 1];
+			else {
+				obj.SumMonth(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
+			}
 		}
-		else if (--month == 2)
-			day = 29;
+		else if (obj.GetMonth() == 3) {
+			obj.SetDay(29);
+			obj.SumMonth(-1);
+		}
+		else
+			if (obj.GetMonth() == 1) {
+				obj.SetMonth(12);
+				obj.SumYear(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
+			}
+			else {
+				obj.SetMonth(-1);
+				obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
+			}
 	}
 	else
-		--day;
-}
-
-void Date::operator+=(int x)
-{
-	day += x;
-	for (int i = 0; day > arr[month - 1]; i++) {
-		if (!(year % 4) && month == 2)
-			break;
-		day -= arr[month - 1];
-		month == arr[month - 1];
-		if (month == 1)
-			++year;
-	}
-}
-
-void Date::operator-=(int x)
-{
-	day -= x;
-	for (int i = 0; day <= 0; i++) {
-		day += !(year % 4) && month == 3 ? 29 : arr[--month - 1];
-	}
-}
-
-Date Date::operator+(int x)
-{
-	day += x;
-	for (int i = 0; day > arr[month - 1]; i++) {
-		if (!(year % 4) && month == 2)
-			break;
-		day -= arr[month - 1];
-		month == arr[month - 1];
-		if (month == 1)
-			++year;
-	}
-	return Date(day, month, year);
-}
-
-Date Date::operator-(int x)
-{
-	day -= x;
-	for (int i = 0; day <= 0; i++) {
-		day += !(year % 4) && month == 3 ? 29 : arr[--month - 1];
-	}
-	return Date(day, month, year);
-}
-
-bool Date::operator<(Date& obj) const
-{
-	if (year < obj.year)
-		return 1;
-	else if (year == obj.year && month < obj.month)
-		return 1;
-	else if (year == obj.year && month == obj.month && day < obj.day)
-		return 1;
-	return 0;
-}
-
-bool Date::operator>(Date& obj) const
-{
-	if (year > obj.year)
-		return 1;
-	else if (year == obj.year && month > obj.month)
-		return 1;
-	else if (year == obj.year && month == obj.month && day > obj.day)
-		return 1;
-	return 0;
-}
-
-bool Date::operator==(Date& obj) const
-{
-	if (year == obj.year && month == obj.month && day == obj.day)
-		return 1;
-	return 0;
-}
-
-bool Date::operator!=(Date& obj) const
-{
-	if (year == obj.year && month == obj.month && day == obj.day)
-		return 0;
-	return 1;
-}
-
-bool Date::operator<=(Date& obj) const
-{
-	if (year <= obj.year)
-		if (year == obj.year && month <= obj.month)
-			if (year == obj.year && month == obj.month && day <= obj.day)
-				return 1;
-	return 0;
-}
-
-bool Date::operator>=(Date& obj) const
-{
-	if (year >= obj.year)
-		if (year == obj.year && month >= obj.month)
-			if (year == obj.year && month == obj.month && day >= obj.day)
-				return 1;
-	return 0;
-}
-
-Date operator --(const Date& obj) {
-
+		obj.SumDay(-1);
+	return obj;
 }
