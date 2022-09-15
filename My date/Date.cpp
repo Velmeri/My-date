@@ -272,3 +272,7 @@ bool Date::operator>=(Date& obj) const
 				return 1;
 	return 0;
 }
+
+Date operator --(const Date& obj) {
+
+}
