@@ -13,6 +13,16 @@ Date::Date(int d, int m, int y)
 	day = d;
 	month = m;
 	year = y;
+	if (month < 1)
+		month = 1;
+	else if (month > 12)
+		month = 12;
+	if (day < 1)
+		day = 1;
+	else if (day > arr[month] && !(year % 4) && month == 2)
+		day = 19;
+	else if (day > arr[month])
+		day = arr[month];
 }
 
 //input
@@ -359,4 +369,66 @@ Date operator--(Date& obj, int)
 	else
 		obj.SumDay(-1);
 	return obj;
+}
+
+Date operator++(Date& obj)
+{
+	if (obj.GetYear() % 4)
+		if (obj.GetDay() == obj.GetArr()[obj.GetMonth() - 1]) {
+			obj.SetDay(1);
+			if (obj.GetMonth() == 12) {
+				obj.SetMonth(1);
+				obj.SumYear(1);
+			}
+			else {
+				obj.SumMonth(1);
+			}
+		}
+		else {
+			obj.SumDay(1);
+		}
+	else {
+		if (obj.GetMonth() == 2)
+			if (obj.GetDay() == 29) {
+				obj.SetDay(1);
+				obj.SumMonth(1);
+			}
+			else {
+				obj.SumDay(1);
+			}
+		else {
+			obj.SetDay(1);
+		}
+	}
+}
+
+Date operator++(Date& obj, int)
+{
+	if (obj.GetYear() % 4)
+		if (obj.GetDay() == obj.GetArr()[obj.GetMonth() - 1]) {
+			obj.SetDay(1);
+			if (obj.GetMonth() == 12) {
+				obj.SetMonth(1);
+				obj.SumYear(1);
+			}
+			else {
+				obj.SumMonth(1);
+			}
+		}
+		else {
+			obj.SumDay(1);
+		}
+	else {
+		if (obj.GetMonth() == 2)
+			if (obj.GetDay() == 29) {
+				obj.SetDay(1);
+				obj.SumMonth(1);
+			}
+			else {
+				obj.SumDay(1);
+			}
+		else {
+			obj.SetDay(1);
+		}
+	}
 }

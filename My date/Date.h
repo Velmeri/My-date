@@ -50,3 +50,5 @@ public:
 
 Date operator-- (Date& obj);
 Date operator-- (Date& obj, int);
+Date operator++ (Date& obj);
+Date operator++ (Date& obj, int);
