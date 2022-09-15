@@ -432,3 +432,88 @@ Date operator++(Date& obj, int)
 		}
 	}
 }
+
+Date operator-=(Date& obj, int a)
+{
+	obj.SumDay(-a);
+	for (int i = 0; obj.GetDay() <= 0; i++) {
+		//day += !(year % 4) && month == 3 ? 29 : arr[--month - 1];
+		if (!(obj.GetYear() % 4) && obj.GetMonth() == 3)
+			obj.SetDay(29);
+		else {
+			obj.SumMonth(-1);
+			obj.SetDay(obj.GetArr()[obj.GetMonth() - 1]);
+		}
+	}
+}
+
+Date operator+=(Date& obj, int a)
+{
+	obj.SumDay(a);
+	for (int i = 0; obj.GetDay() > obj.GetArr()[obj.GetMonth() - 1]; i++) {
+		if (!(obj.GetYear() % 4) && obj.GetMonth() == 2)
+			break;
+		obj.SumDay(obj.GetArr()[obj.GetMonth() - 1]);
+		obj.SetMonth(obj.GetArr()[obj.GetMonth() - 1]);
+		if (obj.GetMonth() == 1)
+			obj.SumYear(1);
+	}
+}
+
+bool operator<(Date& objL, Date& objR)
+{
+	if (objL.GetYear() < objR.GetYear())
+		return 1;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() < objR.GetMonth())
+		return 1;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() > objR.GetDay())
+		return 1;
+	return 0;
+}
+
+bool operator>(Date& objL, Date& objR)
+{
+	if (objL.GetYear() < objR.GetYear())
+		return 0;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() < objR.GetMonth())
+		return 0;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() > objR.GetDay())
+		return 0;
+	return 1;
+}
+
+bool operator<=(Date& objL, Date& objR)
+{
+	if (objL.GetYear() <= objR.GetYear())
+		return 1;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() <= objR.GetMonth())
+		return 1;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() >= objR.GetDay())
+		return 1;
+	return 0;
+}
+
+bool operator>=(Date& objL, Date& objR)
+{
+	if (objL.GetYear() <= objR.GetYear())
+		return 0;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() <= objR.GetMonth())
+		return 0;
+	else if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() >= objR.GetDay())
+		return 0;
+	return 1;
+}
+
+bool operator==(const Date& objL, const Date& objR)
+{
+	if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() == objR.GetDay())
+		return 1;
+	return 0;
+}
+
+bool operator!=(const Date& objL, const Date& objR)
+{
+	if (objL.GetYear() == objR.GetYear() && objL.GetMonth() == objR.GetMonth() && objL.GetDay() == objR.GetDay())
+		return 0;
+	return 1;
+}
